@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TestPrism evaluates whether generated tests generalize across valid and invalid implementations—not just one reference solution.">
+  <meta name="theme-color" content="#f7f7f4">
+  <title>TestPrism — Beyond a Single Reference</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav-shell">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="TestPrism home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 3 34 12 20 37 6 12Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="m6 12 14 7 14-7M20 19v18" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="m20 19 7-12" fill="none" stroke="#8b5cf6" stroke-width="3"/>
+        </svg>
+        <span>Test<span class="brand-italic">Prism</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#benchmark">Benchmark</a>
+        <a href="#results">Results</a>
+        <a href="#testhelix">TestHelix</a>
+        <a href="https://github.com/TestPrism/TestPrism" aria-label="TestPrism code on GitHub">GitHub ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">A benchmark for reliable test generation</p>
+        <h1>One solution is<br><em>not enough.</em></h1>
+        <p class="lede">TestPrism asks whether agent-written tests accept valid alternatives, reject incorrect implementations, and fail on the initial program state.</p>
+        <div class="actions">
+          <a class="button primary" href="assets/testprism-paper.pdf">Read the paper <span>↗</span></a>
+          <a class="button" href="https://github.com/TestPrism/TestPrism">Explore the code <span>↗</span></a>
+          <a class="button" href="https://huggingface.co/datasets/testprism-anonymous/testprism-verified-tasks">Dataset <span>↗</span></a>
+        </div>
+      </div>
+      <div class="prism-scene" aria-label="A prism separating one reference into multiple implementation paths">
+        <div class="ray ray-in"></div>
+        <svg viewBox="0 0 460 360" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f4f0ff" stop-opacity=".95"/>
+              <stop offset="1" stop-color="#e5f5ff" stop-opacity=".45"/>
+            </linearGradient>
+            <filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-opacity=".12"/></filter>
+          </defs>
+          <path d="M230 46 78 310h304Z" fill="url(#glass)" stroke="#1e1e22" stroke-width="2" filter="url(#shadow)"/>
+          <circle cx="230" cy="194" r="7" fill="#1e1e22"/>
+          <path d="M230 194 438 88" stroke="#18a999" stroke-width="5"/>
+          <path d="M230 194 446 151" stroke="#4f86f7" stroke-width="5"/>
+          <path d="M230 194 446 216" stroke="#8b5cf6" stroke-width="5"/>
+          <path d="M230 194 437 280" stroke="#ec4899" stroke-width="5"/>
+          <circle cx="438" cy="88" r="8" fill="#18a999"/>
+          <circle cx="446" cy="151" r="8" fill="#4f86f7"/>
+          <circle cx="446" cy="216" r="8" fill="#8b5cf6"/>
+          <circle cx="437" cy="280" r="8" fill="#ec4899"/>
+        </svg>
+        <span class="ray-label input-label">single reference</span>
+        <span class="ray-label output-label">implementation panel</span>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Benchmark summary">
+      <div><strong>300</strong><span>test tasks</span></div>
+      <div><strong>3,000</strong><span>candidate implementations</span></div>
+      <div><strong>67</strong><span>repositories & projects</span></div>
+      <div><strong>6</strong><span>programming languages</span></div>
+    </section>
+
+    <section class="section benchmark" id="benchmark">
+      <div class="section-heading">
+        <p class="eyebrow">The benchmark</p>
+        <h2>Tests should encode behavior,<br>not one implementation.</h2>
+      </div>
+      <div class="metric-grid">
+        <article class="metric-card featured">
+          <span class="card-index">01</span>
+          <div>
+            <h3>Joint Success Function</h3>
+            <p>A strict success requires all three conditions at once.</p>
+          </div>
+          <div class="equation" aria-label="Joint success equals initial failure and all valid candidates accepted and all invalid candidates rejected">
+            <span>Fail<small>initial</small></span><b>∧</b><span>Accept<small>all valid</small></span><b>∧</b><span>Reject<small>all invalid</small></span>
+          </div>
+        </article>
+        <article class="metric-card">
+          <span class="card-index">02</span>
+          <h3>Balanced panels</h3>
+          <p>Each task pairs the reference with four valid alternatives and five invalid implementations.</p>
+        </article>
+        <article class="metric-card">
+          <span class="card-index">03</span>
+          <h3>Broad coverage</h3>
+          <p>Seventeen benchmark sources span repository maintenance, algorithms, and performance optimization.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section results" id="results">
+      <div class="results-topline">
+        <div>
+          <p class="eyebrow">Main results</p>
+          <h2>The single-reference score hides a 31.67-point gap.</h2>
+        </div>
+        <div class="gap-stat"><strong>59.67%</strong><span>reference success</span><i>→</i><strong>28.00%</strong><span>joint success</span></div>
+      </div>
+      <div class="result-card">
+        <div class="table-tools">
+          <div>
+            <h3>Best configuration per model family</h3>
+            <p>Click a metric to sort. Higher is better.</p>
+          </div>
+          <label class="search"><span class="sr-only">Search model families</span><input id="model-search" type="search" placeholder="Search model families"></label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Rank</th><th>Model</th><th><button data-sort="reference">Reference</button></th><th><button data-sort="valid">Valid accept</button></th><th><button data-sort="invalid">Invalid reject</button></th><th><button data-sort="joint">Joint success ↓</button></th></tr></thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+        <p class="table-note">Reported percentages reproduce the paper's main test-set table. The full study evaluates 14 coding-agent configurations across six model families.</p>
+      </div>
+    </section>
+
+    <section class="section helix" id="testhelix">
+      <div class="helix-copy">
+        <p class="eyebrow">Our agent</p>
+        <h2>TestHelix checks tests against diverse repairs.</h2>
+        <p>Heterogeneous test–repair synthesis, peer cross validation, and recursive self improvement help generated tests generalize across implementations.</p>
+        <div class="gain"><strong>+8.67–9.00</strong><span>JSF percentage points over native harness comparators across two models</span></div>
+      </div>
+      <div class="workflow" aria-label="TestHelix workflow">
+        <div><span>1</span><b>Synthesize</b><small>diverse test–repair pairs</small></div>
+        <i>↘</i>
+        <div><span>2</span><b>Cross validate</b><small>execute, review, correct</small></div>
+        <i>↘</i>
+        <div><span>3</span><b>Self improve</b><small>adapt reusable strategies</small></div>
+      </div>
+    </section>
+
+    <section class="section overview">
+      <div class="section-heading compact"><p class="eyebrow">Evaluation pipeline</p><h2>From tasks to implementation-aware evidence.</h2></div>
+      <figure><img src="assets/testprism-overview.png" alt="Overview of the TestPrism benchmark construction and evaluation pipeline" loading="lazy"><figcaption>TestPrism constructs diverse labeled implementation panels and evaluates one generated suite consistently across every candidate.</figcaption></figure>
+    </section>
+
+    <section class="section cta">
+      <p class="eyebrow">Anonymous artifact</p>
+      <h2>Reproduce the benchmark.</h2>
+      <p>Code, setup instructions, and integrity checks are available now. The verified tasks and frozen patch sets are distributed separately.</p>
+      <div class="actions"><a class="button primary" href="https://github.com/TestPrism/TestPrism">Open GitHub ↗</a><a class="button" href="https://huggingface.co/datasets/testprism-anonymous/testprism-patch-sets">Patch sets ↗</a></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span>Test<span class="brand-italic">Prism</span></span></a><p>Anonymous research artifact · Apache-2.0</p><p>Built for evaluation beyond a single reference.</p></footer>
+  <script src="app.js"></script>
+</body>
+</html>
